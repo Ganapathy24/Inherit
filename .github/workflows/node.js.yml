@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git add -A && git commit -m "Updated code" # <- Add this line
       - run: git config user.email "krishnan.vcg@gmail.com"
       - run: git config user.name "KrishnanVC"
+      - run: git add -A && git commit -m "Updated code" # <- Add this line
       - uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
