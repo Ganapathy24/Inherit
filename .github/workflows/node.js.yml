@@ -29,4 +29,5 @@ jobs:
           heroku_email: "inheritproject2021@gmail.com"
           branch: main
           buildpack: heroku/nodejs
-          appdir: express   
+          appdir: express
+          dontuseforce: true   
