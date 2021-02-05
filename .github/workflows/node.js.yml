@@ -30,7 +30,8 @@ jobs:
           heroku_email: "inheritproject2021@gmail.com"
           branch: "main"
           appdir: Express
-          useforce: true  
+          useforce: true
+          dynamicFiles: false    
       
       - run: git remote -v
       - run: git show-ref
