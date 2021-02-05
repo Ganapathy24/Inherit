@@ -19,4 +19,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "inheritproject" #Must be unique in Heroku
           heroku_email: "inheritproject2021@gmail.com"
-          remote_branch: master # <- Include this  
+          remote_branch: master # <- Include this
+          branch: main  
