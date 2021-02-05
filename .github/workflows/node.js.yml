@@ -14,21 +14,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: ls
-      - name: test
-        run: |
-           cd ./Express
-           ls
-#       - run: git config user.email "krishnan.vcg@gmail.com"
-#       - run: git config user.name "KrishnanVC"
-#       - run: git add -A && git commit -m "Updated code"
+
+      - run: git config user.email "battlographer@github.com"
+      - run: git config user.name "Github"
+      - run: git add -A && git commit -m "Updated code"
+
       - uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "inheritproject" #Must be unique in Heroku
           heroku_email: "inheritproject2021@gmail.com"
           branch: "main"
-          remote_branch: "master"  
           buildpack: heroku/nodejs
           appdir: express
-          dontuseforce: "false"
