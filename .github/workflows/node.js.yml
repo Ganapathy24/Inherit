@@ -29,4 +29,3 @@ jobs:
           heroku_app_name: "inheritproject"
           useforce: true
           procfile: "worker: npm start"
-          buildpacks: "['https://github.com/heroku/heroku-buildpack-nodejs.git','https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git']"       
