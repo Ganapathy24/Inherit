@@ -20,5 +20,5 @@ jobs:
           api_key: ${{secrets.HEROKU_API_KEY}}
           email: "inheritproject2021@gmail.com"
           app_name: "inheritproject"
-          branch: "main"
+          branch: "master"
           subfolder: "Express"     
