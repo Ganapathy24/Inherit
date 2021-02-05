@@ -29,7 +29,7 @@ jobs:
           heroku_app_name: "inheritproject" #Must be unique in Heroku
           heroku_email: "inheritproject2021@gmail.com"
           branch: "main"
-          buildpack: heroku/nodejs
+          buildpacks: heroku/nodejs
           appdir: express
           procfile: "worker: npm start"  
       
