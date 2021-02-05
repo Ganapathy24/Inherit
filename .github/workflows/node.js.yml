@@ -22,16 +22,16 @@ jobs:
             git config user.name "Github"
             git add -A && git commit -m "Updated code"
             
-      - uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
+      - uses: CDNievas/heroku-action@v1.0 # This is the action
         continue-on-error: true
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "inheritproject" #Must be unique in Heroku
           heroku_email: "inheritproject2021@gmail.com"
           branch: "main"
-          remote_branch: "main -ff"  
           buildpack: heroku/nodejs
           appdir: express
+          procfile: "worker: npm start"  
       
       - run: git remote -v
       - run: git show-ref
