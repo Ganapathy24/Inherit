@@ -15,10 +15,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         
-      - uses: onekiloparsec/heroku-node-deploy-subfolder@v1.0.4
+#       - uses: onekiloparsec/heroku-node-deploy-subfolder@v1.0.4
+#         with:
+#           api_key: ${{secrets.HEROKU_API_KEY}}
+#           email: "inheritproject2021@gmail.com"
+#           app_name: "inheritproject"
+#           branch: "master"
+#           subfolder: "Express"
+      - uses: CDNievas/heroku-action@v1.0 # This is the action
         with:
-          api_key: ${{secrets.HEROKU_API_KEY}}
-          email: "inheritproject2021@gmail.com"
-          app_name: "inheritproject"
-          branch: "master"
-          subfolder: "Express"     
+          heroku_email: "inheritproject2021@gmail.com"
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "inheritproject"
+          useforce: true,
+          dynamicFiles: true,
+          procfile: "worker: npm start",
+          buildpacks: "['https://github.com/heroku/heroku-buildpack-nodejs.git','https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git']"       
