@@ -33,3 +33,4 @@ jobs:
           appdir: express
       
       - run: git remote -v
+      - run: git show-ref
