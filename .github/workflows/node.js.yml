@@ -30,7 +30,7 @@ jobs:
           heroku_email: "inheritproject2021@gmail.com"
           branch: "main"
           buildpacks: heroku/nodejs
-          appdir: express
+          appdir: Express
           procfile: "worker: npm start"  
       
       - run: git remote -v
