@@ -31,4 +31,4 @@ jobs:
           remote_branch: "main"  
           buildpack: heroku/nodejs
           appdir: express
-          dontuseforce: false
+          dontuseforce: 0
