@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: ls
-      - run: cd ./express
+      - run: cd ./Express
       - run: ls
 #       - run: git config user.email "krishnan.vcg@gmail.com"
 #       - run: git config user.name "KrishnanVC"
