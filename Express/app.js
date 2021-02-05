@@ -9,7 +9,7 @@ const app = express();
 //     res.status(200).sendFile(__dirname + '/dist/index.html');
 // });
 
-app.get('./', (req,res) => {
+app.get('/', (req,res) => {
     res.send("Hello World");
 })
 
