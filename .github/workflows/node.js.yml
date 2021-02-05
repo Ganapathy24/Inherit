@@ -22,16 +22,24 @@ jobs:
             git config user.name "Github"
             git add -A && git commit -m "Updated code"
             
-      - uses: CDNievas/heroku-action@v1.0 # This is the action
-        continue-on-error: true
+#       - uses: CDNievas/heroku-action@v1.0 # This is the action
+#         continue-on-error: true
+#         with:
+#           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#           heroku_app_name: "inheritproject" #Must be unique in Heroku
+#           heroku_email: "inheritproject2021@gmail.com"
+#           branch: "main"
+#           appdir: Express
+#           useforce: true
+#           dynamicFiles: false 
+        
+      - uses: onekiloparsec/heroku-node-deploy-subfolder@v1.0.4
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "inheritproject" #Must be unique in Heroku
-          heroku_email: "inheritproject2021@gmail.com"
-          branch: "main"
-          appdir: Express
-          useforce: true
-          dynamicFiles: false    
+          api_key: ${{secrets.HEROKU_API_KEY}}
+          email: "inheritproject2021@gmail.com"
+          app_name: "inheritproject"
+          heroku_branch: "master"
+          subfolder: "Express"     
       
       - run: git remote -v
       - run: git show-ref
