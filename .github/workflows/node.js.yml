@@ -16,13 +16,13 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: commit
+        continue-on-error: true
         run: |
             git config user.email "battlographer@github.com"
             git config user.name "Github"
             git add -A && git commit -m "Updated code"
 
       - uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
-        continue-on-error: true
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "inheritproject" #Must be unique in Heroku
