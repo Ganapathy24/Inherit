@@ -38,7 +38,7 @@ jobs:
           api_key: ${{secrets.HEROKU_API_KEY}}
           email: "inheritproject2021@gmail.com"
           app_name: "inheritproject"
-          heroku_branch: "master"
+          branch: "master"
           subfolder: "Express"     
       
       - run: git remote -v
