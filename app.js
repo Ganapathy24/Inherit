@@ -10,7 +10,7 @@ const app = express();
 // });
 
 app.get('/', (req, res) => {
-    res.send("Hello world");
+    res.send("Hello buddy");
 })
 // Start the server
 app.listen(process.env.PORT || 8080);
