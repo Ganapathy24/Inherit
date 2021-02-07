@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 
-// // Use the /dist directory
 app.use(express.static(__dirname + '/dist/inherit-ui'));
 
 // // Catch all other invalid routes
