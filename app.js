@@ -6,7 +6,7 @@ const app = express();
 
 // // Catch all other invalid routes
 app.get('/', function(req,res){
-    res.status(200).sendFile(__dirname + '/dist/index.html');
+    res.status(200).sendFile('/dist/index.html');
 });
 
 // app.get('/', (req, res) => {
