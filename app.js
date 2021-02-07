@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 
 // // Use the /dist directory
-// app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/dist/inherit-ui'));
 
 // // Catch all other invalid routes
 app.get('/', function(req,res){
-    res.status(200).sendFile('/dist/index.html');
+    res.status(200).sendFile(__dirname + '/dist/inherit-ui/index.html');
 });
 
 // app.get('/', (req, res) => {
