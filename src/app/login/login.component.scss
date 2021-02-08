@@ -1,0 +1,22 @@
+.example-fill-remaining-space {
+  // This fills the remaining space, by using flexbox.
+  // Every toolbar row uses a flexbox row layout.
+  flex: 1 1 auto;
+}
+
+
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/background1.jpg");
+  background-size: 1000px 800px;
+
+}
+
+.example-card {
+  width :20%;
+  alignment: center;
+  justify-content: space-between;
+}
