@@ -20,10 +20,7 @@ class db {
 
             const result = await collection.insertOne(user);
 
-            if(insertedCount == 1) {
-                return 1;
-            }
-            
+           return result.insertedCount;
         } 
         
         finally {
