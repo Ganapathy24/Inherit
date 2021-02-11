@@ -5,8 +5,8 @@ const { MongoClient } = require("mongodb");
 class db {
 
     constructor() {
-        this.uri = "mongodb+srv://Krishnan:Gokul@13@cluster0.gmgmf.mongodb.net/<dbname>?retryWrites=true&w=majority";
         this.database = "InheritDatabase"
+        this.uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.gmgmf.mongodb.net/${this.database}?retryWrites=true&w=majority`;
         this.client = new MongoClient(this.uri, { useUnifiedTopology: true });
     }
 
