@@ -4,7 +4,7 @@
 
 .example-container {
   width: min-content;
-  height: 100vh;
+  height: 92vh;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 .example-sidenav-content {
@@ -22,20 +22,24 @@
   display :flex;
 }
 .example-card {
-  max-width: 400px;
-  height: 350px;
+  height: 300px;
   display:grid;
-
+  width :350px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, .2), 0 10px 10px rgba(0, 0, 0, .2);
 }
 .card-group {
+  //background-image: url("../../assets/background4.jpg");
+  //background-size: 1700px 800px;
+  //background-repeat: no-repeat;
+  height:92vh;
   align-items: center;
   justify-content: center;
   justify-items: center;
-  width: auto;
-  padding : 5px;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(4,390px);
-  grid-gap: 10px;
+  //padding: 1px;
+  grid-template-columns: repeat(4,400px);
+  grid-gap: 2px;
 }
 
 .example-header-image {
