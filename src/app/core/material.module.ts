@@ -10,6 +10,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectChange, MatSelectModule} from '@angular/material/select';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {MatSelectChange, MatSelectModule} from '@angular/material/select';
     MatTableModule,
     MatMenuModule,
     MatIconModule,
+    MatSidenavModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
     MatSelectModule
   ],
   exports: [
@@ -37,7 +41,9 @@ import {MatSelectChange, MatSelectModule} from '@angular/material/select';
     MatMenuModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSidenavModule,
+    MatTooltipModule
   ],
 })
 export class CustomMaterialModule {
