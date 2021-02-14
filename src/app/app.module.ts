@@ -12,13 +12,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { ImportProjectComponent } from './import-project/import-project.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserComponent,
     ToolbarComponent,
-    ProjectDialog
+    ProjectDialog,
+    ProjectDetailsComponent,
+    ImportProjectComponent
   ],
   imports: [
     BrowserModule,

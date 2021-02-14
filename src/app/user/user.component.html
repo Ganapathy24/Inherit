@@ -4,15 +4,15 @@
   </button>
   <span>InherIT</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button matTooltip="Upload Project">
+  <button mat-icon-button matTooltip="Upload Project" (click)="uploadProject()">
     <mat-icon>cloud_upload</mat-icon>
 
   </button>
   <button mat-icon-button matTooltip="Logout">
     <mat-icon>logout</mat-icon>
   </button>
-
 </mat-toolbar>
+
 <div class="dashboard">
   <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
@@ -29,22 +29,21 @@
 
   <div class="card-group" (ngModel)="itemList">
     <mat-card *ngFor="let product of itemList" class="example-card">
-      <mat-toolbar class="flex-wrap shadow">
-        <mat-card-title>Project - {{product.title}}</mat-card-title>
+      <mat-toolbar class="flex-wrap shadow " color="primary" style="height: min-content;">
+        <mat-card-title style="font-size: medium; width: 100%;">{{product.title}}</mat-card-title>
       </mat-toolbar>
       <mat-card-content>
         <p>
           {{product.description}}
         </p>
       </mat-card-content>
-      <tr>
-        <td><button mat-raised-button color="primary" class = "v-button" (click)="openDialog()">View Project</button></td>
-        <td><span> &nbsp;  &nbsp;  &nbsp;</span></td>
-        <td><button mat-raised-button color="primary" class = "v-button">Select Project</button></td>
-      </tr>
+      <mat-card-footer align="center">
+          <button mat-button color="warn" class="button-class s-button" (click)="openDialog()"> View </button>
+        <span>&nbsp; &nbsp; &nbsp;</span>
+          <button mat-button color="primary" class="button-class " (click)="redirect()"> Select </button>
+      </mat-card-footer>
     </mat-card>
   </div>
-
 </div>
 
 

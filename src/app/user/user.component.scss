@@ -21,10 +21,15 @@
   display :flex;
 }
 .example-card {
-  height: 300px;
+  padding: 0;
+  height: 90%;
   display:grid;
-  width :350px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, .2), 0 10px 10px rgba(0, 0, 0, .2);
+  width :90%;
+  font-family: "Times New Roman";
+
+  text-align: center;
+  border: #0a0118 0.5px solid;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .2), 0 10px 10px rgba(0, 0, 0, .2);
 }
 .card-group {
   //background-image: url("../../assets/background4.jpg");
@@ -37,7 +42,7 @@
   width: 100%;
   display: grid;
   //padding: 1px;
-  grid-template-columns: repeat(4,400fr);
+  grid-template-columns: repeat(4,1fr);
   grid-gap: 2px;
 }
 
@@ -46,8 +51,24 @@
   background-size: cover;
 }
 
-.v-button {
+.button-class {
   height:40px;
   width: min-content;
-;
+  border: #673ab7 2px double;
+  border-radius: 5%;
+}
+.button-class:hover {
+  background-color: #673ab7;
+  color: #fff;
+}
+.s-button {
+  border: #f44336 2px double;
+}
+.s-button:hover{
+  color: white;
+  background-color: #f44336;
+}
+
+.footer {
+  height:5%;
 }

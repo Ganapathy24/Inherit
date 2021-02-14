@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectDetails} from '../Entity/ProjectDetails';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -16,8 +17,7 @@ export class UserComponent implements OnInit {
   itemsPerPage: number;
   names: string[];
   itemList: ProjectDetails[] = new Array();
-
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private router: Router) {
   }
   ngOnInit(): void {
     let pd: ProjectDetails;
@@ -36,14 +36,25 @@ export class UserComponent implements OnInit {
     this.itemList.push(pd);
     pd = new ProjectDetails('Project6', '....', ['Python', 'java'], 'Dummy');
     this.itemList.push(pd);
+    pd = new ProjectDetails('Project6', '....', ['Python', 'java'], 'Dummy');
+    this.itemList.push(pd);
+    pd = new ProjectDetails('Project6', '....', ['Python', 'java'], 'Dummy');
+    this.itemList.push(pd);
     this.noOfItems = 4;
   }
   openDialog(): void{
     const dialogRef = this.dialog.open(ProjectDialog);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      result ? this.redirect() : null;
     });
+  }
+  redirect(): void {
+    this.router.navigate(['project-details']);
+  }
+
+  uploadProject(): void {
+    this.router.navigate(['import-project']);
   }
 }
 
