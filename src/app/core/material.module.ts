@@ -13,7 +13,6 @@ import {MatSelectChange, MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -24,11 +23,12 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatDialogModule,
     MatTableModule,
     MatMenuModule,
+    MatDialogModule,
     MatIconModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   exports: [
     CommonModule,
@@ -37,13 +37,14 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatCardModule,
     MatInputModule,
     MatDialogModule,
+    MatDialogModule,
     MatTableModule,
     MatMenuModule,
     MatIconModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
 })
 export class CustomMaterialModule {

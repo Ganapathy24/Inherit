@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 
+;
 
 interface Years {
   roman: string | undefined;
@@ -25,7 +26,6 @@ export class LoginComponent implements OnInit {
   studentid: string | undefined;
   mobileno: number | undefined;
   ghusername: number | undefined;
-
   isVisible = false;
 
   departments: string[];
@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
       {roman: 'III', year: 3},
       {roman: 'IV', year: 4},
     ];
+
   }
 
   login(): void {

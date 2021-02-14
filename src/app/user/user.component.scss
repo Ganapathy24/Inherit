@@ -4,12 +4,11 @@
 
 .example-container {
   width: min-content;
-  height: 92vh;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 .example-sidenav-content {
   display: flex;
-  height: 100vh;
+
   align-items: center;
   justify-content: center;
 }
@@ -31,14 +30,14 @@
   //background-image: url("../../assets/background4.jpg");
   //background-size: 1700px 800px;
   //background-repeat: no-repeat;
-  height:92vh;
   align-items: center;
+  min-height: 92vh;
   justify-content: center;
   justify-items: center;
   width: 100%;
   display: grid;
   //padding: 1px;
-  grid-template-columns: repeat(4,400px);
+  grid-template-columns: repeat(4,400fr);
   grid-gap: 2px;
 }
 
@@ -47,3 +46,8 @@
   background-size: cover;
 }
 
+.v-button {
+  height:40px;
+  width: min-content;
+;
+}
