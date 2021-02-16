@@ -1,1 +1,97 @@
-<p>import-project works!</p>
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)=drawer.toggle()>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>InherIT</span>
+  <span class="example-spacer"></span>
+  <!--  <button mat-icon-button matTooltip="Upload Project" (click)="uploadProject()">-->
+  <!--    <mat-icon>cloud_upload</mat-icon>-->
+
+  <!--  </button>-->
+  <button mat-icon-button matTooltip="Logout">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="input-board">
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <mat-icon>menu</mat-icon>
+      <br><br>
+      <mat-icon>logout</mat-icon>
+      <br><br>
+      <mat-icon>logout</mat-icon>
+      <br><br>
+      <mat-icon>logout</mat-icon>
+      <br><br>
+    </mat-drawer>
+  </mat-drawer-container>
+
+
+  <mat-card class="project-card" style="padding: 0">
+    <mat-card-title class="title">
+      <span> Import Project</span>
+    </mat-card-title>
+
+    <div class="input-form">
+      <mat-form-field class="type-field">
+        <input matInput placeholder="Project Name" [(ngModel)]="projectName" name="projectname" required>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="type-field">
+        <!--        <input matInput placeholder="Languages Used" [(ngModel)]="languagesUsed" name="languagesused" required>-->
+        <mat-label>Languages Used</mat-label>
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip *ngFor="let language of languagesUsed" [selectable]="selectable"
+                    [removable]="removable" (removed)="remove(language)">
+            {{language.name}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="ex: python, c, java, etc.."
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+      </mat-form-field>
+      <br>
+
+      <!--      <mat-form-field class="type-field">-->
+      <!--        <mat-label>Description</mat-label>-->
+      <!--        <textarea style="height: 10px" matInput-->
+      <!--                  placeholder="Ex. Let me sing a kutty story. pay attention! listen to me...."></textarea>-->
+      <!--      </mat-form-field>-->
+      <mat-form-field class="type-field">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="Ex. Let me sing a kutty story. pay attention! listen to me...."
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="3"
+          cdkAutosizeMaxRows="7">
+    </textarea>
+      </mat-form-field>
+      <br>
+      <div class="spilt-page">
+        <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop onFileDropped="uploadFile($event)">
+          <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+        </div>
+        <div class="files-list">
+          <div *ngFor="let file of files;let i= index">
+            <p style="padding-bottom: 5px"> {{ file }}
+              <button class="delete-file" (click)="deleteAttachment(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+      <br>
+      <mat-card-footer align ="center">
+        <button style="margin: auto" mat-raised-button color="primary"> Submit</button>
+      </mat-card-footer>
+    </div>
+
+  </mat-card>
+</div>
