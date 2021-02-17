@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
-import { Directive, Output, Input, EventEmitter, HostBinding, HostListener } from '@angular/core';
+import {Directive, Output, Input, EventEmitter, HostBinding, HostListener} from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface Languages {
   name: string;
@@ -16,7 +17,7 @@ export interface Languages {
 
 export class ImportProjectComponent implements OnInit {
 
-  constructor() {
+  constructor(private _snackBar: MatSnackBar) {
   }
 
   projectName: string;
@@ -93,10 +94,11 @@ export class ImportProjectComponent implements OnInit {
     }
   }
 
-  uploadFile(event: string | any[]): void {
+
+  uploadFile(event: EventTarget): void {
     for (let index = 0; index < event.length; index++) {
-      const element = event[index];
-      this.files.push(element.name);
+      const element =
+        this.files.push(element.name);
     }
   }
 
@@ -104,7 +106,25 @@ export class ImportProjectComponent implements OnInit {
     this.files.splice(index, 1);
   }
 
+  openSnackBar(): void {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: 5 * 1000,
+    });
+  }
 }
+
+@Component({
+  selector: 'app-submit-snack',
+  templateUrl: 'snackbar-submit.html',
+  styles: [`
+    .example-submit-snackbar {
+      color: white;
+    }
+  `],
+})
+export class SnackBarComponent {
+}
+
 
 
 

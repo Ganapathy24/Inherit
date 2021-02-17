@@ -55,10 +55,11 @@ textarea {
 }
 
 .uploadfilecontainer {
-  background-image: url("../../assets/cloud.png");
+  background-image: url("../../assets/uploadimg.jpeg");
   background-repeat: no-repeat;
   background-size: 100px;
   background-position: center;
+  background-color: #f6f6f6;
   height: 20vh;
   width: 50%;
   margin: auto;
@@ -68,9 +69,7 @@ textarea {
 
 .uploadfilecontainer:hover {
   cursor: pointer;
-  background-color: #3b86bf;
   background-origin: border-box;
-  background-image: url("../../assets/cloud.png");
   opacity: 0.8;
 }
 
@@ -101,3 +100,4 @@ textarea {
 .spilt-page {
   display: flex;
 }
+

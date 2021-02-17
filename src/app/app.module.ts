@@ -13,7 +13,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
-import { ImportProjectComponent } from './import-project/import-project.component';
+import {ImportProjectComponent, SnackBarComponent} from './import-project/import-project.component';
 import {MatChipsModule} from '@angular/material/chips';
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import {MatChipsModule} from '@angular/material/chips';
     ProjectDialog,
     ProjectDetailsComponent,
     ImportProjectComponent,
+    SnackBarComponent,
   ],
     imports: [
         BrowserModule,

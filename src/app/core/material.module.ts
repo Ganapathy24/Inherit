@@ -12,6 +12,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectChange, MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatMenuModule,
     MatDialogModule,
     MatIconModule,
+    MatSnackBarModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
@@ -39,6 +41,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatDialogModule,
     MatDialogModule,
     MatTableModule,
+    MatSnackBarModule,
     MatMenuModule,
     MatIconModule,
     MatProgressSpinnerModule,

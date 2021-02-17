@@ -74,8 +74,8 @@
       </mat-form-field>
       <br>
       <div class="spilt-page">
-        <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop onFileDropped="uploadFile($event)">
-          <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+        <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop onFileDropped="uploadFile($event.target.files)">
+          <input hidden type="file" #fileInput (change)="uploadFile($event.target.files);">
         </div>
         <div class="files-list">
           <div *ngFor="let file of files;let i= index">
@@ -89,7 +89,7 @@
       </div>
       <br>
       <mat-card-footer align ="center">
-        <button style="margin: auto" mat-raised-button color="primary"> Submit</button>
+        <button style="margin: auto" mat-raised-button color="primary" (click)="openSnackBar()"> Submit</button>
       </mat-card-footer>
     </div>
 
