@@ -27,7 +27,7 @@
     </mat-drawer>
   </mat-drawer-container>
 
-  <div class="card-group" (ngModel)="itemList">
+  <div class="card-group" (ngModel)= 'itemList'>
     <mat-card *ngFor="let product of itemList" class="example-card">
       <mat-toolbar class="flex-wrap shadow " color="primary" style="height: min-content;">
         <mat-card-title style="font-size: medium; width: 100%;">{{product.title}}</mat-card-title>
@@ -38,7 +38,7 @@
         </p>
       </mat-card-content>
       <mat-card-footer align="center">
-          <button mat-button color="warn" class="button-class s-button" (click)="openDialog()"> View </button>
+          <button mat-button class="button-class s-button" (click)="openDialog()"> View </button>
         <span>&nbsp; &nbsp; &nbsp;</span>
           <button mat-button color="primary" class="button-class " (click)="redirect()"> Select </button>
       </mat-card-footer>

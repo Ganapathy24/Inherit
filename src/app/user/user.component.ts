@@ -43,7 +43,7 @@ export class UserComponent implements OnInit {
     this.noOfItems = 4;
   }
   openDialog(): void{
-    const dialogRef = this.dialog.open(ProjectDialog);
+    const dialogRef = this.dialog.open(ProjectDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       result ? this.redirect() : null;
@@ -63,7 +63,7 @@ export class UserComponent implements OnInit {
   templateUrl: './project.dialog.html'
 })
 
-export class ProjectDialog {
+export class ProjectDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<any>) {}
 

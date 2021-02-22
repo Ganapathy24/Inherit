@@ -1,32 +1,10 @@
-.example-spacer {
-  flex: 1 1 auto;
-}
 
-.example-container {
-  width: min-content;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-.example-sidenav-content {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-}
-
-.example-sidenav {
-  padding: 20px;
-}
-
-.dashboard {
-  display :flex;
-}
 .example-card {
   padding: 0;
   height: 90%;
   display:grid;
   width :90%;
   font-family: "Times New Roman";
-
   text-align: center;
   border: #0a0118 0.5px solid;
   box-shadow: 0 5px 15px rgba(0, 0, 0, .2), 0 10px 10px rgba(0, 0, 0, .2);
@@ -62,12 +40,12 @@
   color: #fff;
 }
 .s-button {
-  border: #dd41cd 2px double;
-  color: #dd41cd;
+  border: #a63ab7 2px double;
+  color: #a63ab7;
 }
 .s-button:hover{
   color: white;
-  background-color: #dd41cd;
+  background-color: #a63ab7;
 }
 
 .footer {

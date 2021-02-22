@@ -1,1 +1,25 @@
-<p>import-project works!</p>
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)=drawer.toggle()>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>InherIT</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button matTooltip="Logout">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="dashboard">
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <mat-icon>menu</mat-icon>
+      <br><br>
+      <mat-icon>logout</mat-icon>
+      <br><br>
+      <mat-icon>logout</mat-icon>
+      <br><br>
+      <mat-icon>logout</mat-icon>
+      <br><br>
+    </mat-drawer>
+  </mat-drawer-container>
+</div>
