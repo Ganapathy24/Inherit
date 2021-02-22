@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import {NgModule} from '@angular/core';
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
@@ -13,8 +13,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
-import {ImportProjectComponent, SnackBarComponent} from './import-project/import-project.component';
-import {MatChipsModule} from '@angular/material/chips';
+import { ImportProjectComponent } from './import-project/import-project.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,24 +22,20 @@ import {MatChipsModule} from '@angular/material/chips';
     ToolbarComponent,
     ProjectDialog,
     ProjectDetailsComponent,
-    ImportProjectComponent,
-    SnackBarComponent,
+    ImportProjectComponent
   ],
-    imports: [
-        BrowserModule,
-        DragDropModule,
-        CustomMaterialModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        FontAwesomeModule,
-        MatPaginatorModule,
-        MatChipsModule
-    ],
+  imports: [
+    BrowserModule,
+    CustomMaterialModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    MatPaginatorModule
+  ],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
