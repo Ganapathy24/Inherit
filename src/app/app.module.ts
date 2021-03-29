@@ -13,6 +13,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ImportProjectComponent } from './import-project/import-project.component';
+import {UserService} from './service/user.service';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +33,10 @@ import { ImportProjectComponent } from './import-project/import-project.componen
     AppRoutingModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

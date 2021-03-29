@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 
 import {Router} from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {UserService} from '../service/user.service';
 
 ;
 
@@ -17,7 +19,7 @@ interface Years {
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: HttpClient, private userService: UserService) {
   }
 
   years: Years[] | undefined;
@@ -50,11 +52,14 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    if (this.username == 'inherit' && this.password == '1234') {
-      this.router.navigate(['user']);
-    } else {
-      alert('Invalid credientials');
-    }
+    this.userService.doValidation(this.username, this.password).subscribe((data) => {
+      console.log(data);
+    });
+    // if (this.username === 'inherit' && this.password === '1234') {
+    //   this.router.navigate(['user']);
+    // } else {
+    //   alert('Invalid credientials');
+    // }
   }
 
   forgetpassword(): void {
