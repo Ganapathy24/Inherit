@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
-const api = require('./express_app/apiRouter');
+const api = require('./express_app/router/apiRouter');
 require('dotenv').config();
 
 app.use(express.static(__dirname + '/dist/inherit-ui'));
+app.use(express.json());
 
 app.use('/api', api);
 
@@ -13,4 +14,5 @@ app.get('/', function(req,res){
 });
 
 // Start the server
-app.listen(process.env.PORT || 8080);
+const port = process.env.PORT || 8081
+app.listen(port,() => console.log(`Listening at port ${port}`));
