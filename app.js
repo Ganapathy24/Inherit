@@ -1,10 +1,12 @@
 const express = require('express');
+const morgan = require('morgan');
 const app = express();
 const api = require('./express_app/router/apiRouter');
 require('dotenv').config();
 
 app.use(express.static(__dirname + '/dist/inherit-ui'));
 app.use(express.json());
+app.use(morgan('tiny'))
 
 app.use('/api', api);
 

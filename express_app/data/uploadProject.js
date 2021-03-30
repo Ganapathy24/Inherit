@@ -21,6 +21,9 @@ class uploadProject {
 
             return result.insertedCount;
         } 
+        catch (err) {
+            return 0;
+        }
         
         finally {
             await this.client.close();

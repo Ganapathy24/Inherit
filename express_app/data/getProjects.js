@@ -21,6 +21,10 @@ class registerUser {
             const projects = await collection.find(query).skip(start).limit(limit).toArray();
             return projects;
         } 
+
+        catch (err) {
+            return null;
+        }
         
         finally {
             await this.client.close();

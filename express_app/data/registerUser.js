@@ -21,7 +21,11 @@ class registerUser {
             const result = await collection.insertOne(user);
 
             return result.insertedCount;
-        } 
+        }
+        
+        catch(err) {
+            return 0;
+        }
         
         finally {
             await this.client.close();

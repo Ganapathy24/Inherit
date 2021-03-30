@@ -32,6 +32,9 @@ class loginUser {
 
             return result;
         } 
+        catch (err) {
+            return err;
+        }
         
         finally {
             await this.client.close();
