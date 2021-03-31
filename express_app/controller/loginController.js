@@ -12,7 +12,12 @@ async function loginController(req, res) {
   }
   else {
     const match = await bcrypt.compare(password, user.password);
-    res.send(jsonResponse("SUCCESSFUL", "Login successful", match))
+    if(match) {
+      req.session.user = user.name
+      res.send(jsonResponse("SUCCESSFUL", "Login successful", match));
+    } 
+    else 
+      res.send(jsonResponse("DENIED", "Incorrect password", match));
   }
 }
 

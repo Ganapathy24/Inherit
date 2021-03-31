@@ -6,7 +6,7 @@ async function getProjectController(req,res) {
     let start = req.body.start
     let limit = req.body.limit
     
-    if(typeof query === Object || query.languages === undefined) {
+    if(query.languages === undefined) {
         res.send(jsonResponse("UNSUCCESSFUL", "Ill formed query"))
     }
 
@@ -20,6 +20,7 @@ async function getProjectController(req,res) {
             res.send(jsonResponse("UNSUCCESSFUL","No matching projects found"))
         }
         else {
+            console.log(req.session.user)
             res.send(jsonResponse("SUCCESSFUL", "Projects matching", projects))
         }
     }
