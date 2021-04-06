@@ -1,16 +1,25 @@
 export class ProjectDetails {
+  private _projectId: string;
   private _title: string;
   private _description: string;
   private _languagesUsed: string[];
   private _button: any;
 
-  constructor(title: string, description: string, languagesUsed: string[], button: any) {
+  constructor(projectId: string, title: string, description: string, languagesUsed: string[], button: any) {
+    this._projectId = projectId;
     this._title = title;
     this._description = description;
     this._languagesUsed = languagesUsed;
     this._button = button;
   }
 
+  get projectId(): string {
+    return this._projectId;
+  }
+
+  set projectId(projectId) {
+    this._projectId = projectId;
+  }
 
   get title(): string {
     return this._title;

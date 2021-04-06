@@ -8,7 +8,7 @@
     <mat-icon>cloud_upload</mat-icon>
 
   </button>
-  <button mat-icon-button matTooltip="Logout">
+  <button mat-icon-button matTooltip="Logout" (click) = logout()>
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
@@ -27,7 +27,7 @@
     </mat-drawer>
   </mat-drawer-container>
 
-  <div class="card-group" (ngModel)= 'itemList'>
+  <div class="card-group">
     <mat-card *ngFor="let product of itemList" class="example-card">
       <mat-toolbar class="flex-wrap shadow " color="primary" style="height: min-content;">
         <mat-card-title style="font-size: medium; width: 100%;">{{product.title}}</mat-card-title>

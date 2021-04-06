@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from '../service/user.service';
+import {CookieService} from 'ngx-cookie-service';
 
 ;
 
@@ -19,7 +20,7 @@ interface Years {
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private http: HttpClient, private userService: UserService) {
+  constructor(private router: Router, private http: HttpClient, private userService: UserService, private cookieService: CookieService) {
   }
 
   years: Years[] | undefined;
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit {
       const x = JSON.parse(JSON.stringify(data));
       const status = x['status'];
       if (status === 'SUCCESSFUL') {
+        this.cookieService.set('user', this.username);
         this.router.navigate(['user']);
       } else {
         alert('Invalid Credientials');
@@ -95,6 +97,8 @@ export class LoginComponent implements OnInit {
       .style
       .display = 'none';
 
+
+
   }
 
   signin(): void {
@@ -124,4 +128,8 @@ export class LoginComponent implements OnInit {
       .display = 'flex';
   }
 
+  regsiter(): void{
+    alert('Registered Successfully');
+    this.signin();
+  }
 }

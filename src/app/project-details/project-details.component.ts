@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-project-details',
@@ -8,9 +9,15 @@ import {MatChipInputEvent} from '@angular/material/chips';
   styleUrls: ['./project-details.component.scss']
 })
 export class ProjectDetailsComponent implements OnInit {
-  projectname: any = 'Facial Gestures';
-  description: any = 'Project project project';
-  toolsUsed: string[] = ['python', 'java'];
+  projectname: any = 'Inherit';
+  description: any = 'William Shakespeare \'s name is synonymous with many of the famous lines he wrote in his plays and prose. Yet his' +
+    'poems are not nearly as recognizable to many as the characters and famous monologues from his many plays.' +
+    'In Shakespeare\'s era (1564-1616), it was not profitable but very fashionable to write poetry. It also provided' +
+    'credibility to his talent as a writer and helped to enhance his social standing. It seems writing poetry was' +
+    'something he greatly enjoyed and did mainly for himself at times when he was not consumed with writing a play.' +
+    'Because of their more private nature, few poems, particularly long-form poems, have been published.' +
+    'The two longest works that scholars agree were written by Shakespear.';
+  toolsUsed: string[] = ['python', 'Django'];
   visible = true;
   selectable = true;
   removable = true;
@@ -19,7 +26,7 @@ export class ProjectDetailsComponent implements OnInit {
   teamname = 'Geeked Out!';
   teammemberId = 'e7it085';
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
@@ -46,5 +53,9 @@ export class ProjectDetailsComponent implements OnInit {
     if (input) {
       input.value = '';
     }
+  }
+
+  logout(): void {
+    this.router.navigate(['login']);
   }
 }

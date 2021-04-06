@@ -12,10 +12,12 @@ export class UserService {
 
   doValidation(username: string, password: string) {
     console.log('Username + ' + username + ' Password' + password);
-    let body : any = {};
+    let body: any = {};
     body['name'] = username;
     body['password'] = password;
     return this.http.post(this.url + 'login', body);
 
   }
+
+
 }
