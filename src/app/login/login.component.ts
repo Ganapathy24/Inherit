@@ -54,12 +54,14 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.userService.doValidation(this.username, this.password).subscribe((data) => {
       console.log(data);
+      const x = JSON.parse(JSON.stringify(data));
+      const status = x['status'];
+      if (status === 'SUCCESSFUL') {
+        this.router.navigate(['user']);
+      } else {
+        alert('Invalid Credientials');
+      }
     });
-    // if (this.username === 'inherit' && this.password === '1234') {
-    //   this.router.navigate(['user']);
-    // } else {
-    //   alert('Invalid credientials');
-    // }
   }
 
   forgetpassword(): void {

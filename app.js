@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const session = require('express-session');
+let cors = require('cors')
+app.use(cors())
 const MongoDBStore = require('connect-mongodb-session')(session);
 
 const url = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.gmgmf.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`;
