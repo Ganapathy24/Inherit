@@ -9,6 +9,6 @@ router.get('/',(req, res) => {
 })
 
 router.post('/upload', projectUploadController)
-router.get('/get', getProjectController)
+router.post('/get', getProjectController)
 
 module.exports = router
