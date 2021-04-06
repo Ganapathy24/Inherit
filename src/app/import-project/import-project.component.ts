@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import {ProjectService} from '../service/project.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-import-project',
@@ -21,7 +23,7 @@ export class ImportProjectComponent implements OnInit {
   teammemberId: string;
 
 
-  constructor() {
+  constructor(private projectService: ProjectService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -50,4 +52,21 @@ export class ImportProjectComponent implements OnInit {
     }
   }
 
+  uploadProject(): void {
+    let data: any = {};
+    data['name'] = this.projectname;
+    data['description'] = this.description;
+    data['languages'] = this.toolsUsed;
+    data['teamname'] = this.teamname;
+    data['teammember'] = this.teammemberId;
+    this.projectService.uploadData(data).subscribe((data) => {
+      const x = JSON.parse(JSON.stringify(data));
+      if (x['status'] === 'SUCCESSFUL') {
+        alert('Project Uploaded Successfully');
+        this.router.navigate(['user']);
+      } else {
+        alert('Something went wrong !!');
+      }
+    });
+  }
 }

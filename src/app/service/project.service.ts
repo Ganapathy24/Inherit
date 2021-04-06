@@ -22,4 +22,8 @@ export class ProjectService {
     return this.http.post(this.url + 'get', data);
 
   }
+
+  uploadData(data: any) {
+    return this.http.post(this.url + 'upload', data);
+  }
 }
