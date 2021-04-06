@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)=drawer.toggle()>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
   <span>InherIT</span>
@@ -9,17 +9,45 @@
   </button>
 </mat-toolbar>
 
-<div class="dashboard">
-  <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-      <mat-icon>menu</mat-icon>
-      <br><br>
-      <mat-icon>logout</mat-icon>
-      <br><br>
-      <mat-icon>logout</mat-icon>
-      <br><br>
-      <mat-icon>logout</mat-icon>
-      <br><br>
-    </mat-drawer>
-  </mat-drawer-container>
-</div>
+
+<mat-card class="half-width" style="height: 100%">
+  <mat-card-title>Project Details</mat-card-title>
+  <mat-form-field class="half-width">
+    <input matInput placeholder="Project Title" [(ngModel)]="projectname" name="projectname" required>
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field class="half-width">
+    <input matInput placeholder="Team Name" [(ngModel)]="teamname" name="teamname" required>
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field class="half-width">
+    <input matInput placeholder="Team member Id" [(ngModel)]="teammemberId" name="teammemberId" required>
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-label>Tools Used</mat-label><br><br>
+  <mat-chip-list #chipList aria-label="Fruit selection">
+    <mat-chip *ngFor="let tool of toolsUsed" [selectable]="selectable"
+              [removable]="removable" (removed)="remove(tool)">
+      {{tool}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="New tool..."
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)">
+    <input [matChipInputFor]="chipList">
+  </mat-chip-list>
+  <br><br>
+
+  <mat-form-field class="half-width">
+    <textarea matInput placeholder="Description" [(ngModel)]="description" required></textarea>
+  </mat-form-field>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Import</button>
+  </mat-card-actions>
+
+</mat-card>

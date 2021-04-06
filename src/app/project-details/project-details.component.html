@@ -1,1 +1,39 @@
-<p>project-details works!</p>
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>InherIT</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button matTooltip="Logout">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-card class="half-width">
+  <mat-card-title><strong>Project Details</strong></mat-card-title>
+  <h3> Project Name: </h3>
+  <mat-label>{{projectname}}</mat-label>
+  <br>
+  <br>
+  <h3>Team Name: </h3>
+  <mat-label>{{teamname}}</mat-label>
+  <br>
+  <br>
+  <h3> Team Member:</h3>
+  <mat-label> Team member : {{teammemberId}}</mat-label>
+  <br>
+  <br>
+  <h3>Tools Used: </h3>
+  <br><br>
+  <mat-chip-list #chipList aria-label="Fruit selection">
+    <mat-chip *ngFor="let tool of toolsUsed" [selectable]="selectable">
+      {{tool}}
+    </mat-chip>
+  </mat-chip-list>
+  <br><br>
+  <h3> Description:</h3>
+
+  <mat-label>{{description}}</mat-label>
+
+</mat-card>
+

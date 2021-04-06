@@ -15,6 +15,7 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import { ImportProjectComponent } from './import-project/import-project.component';
 import {UserService} from './service/user.service';
 import {HttpClientModule} from '@angular/common/http';
+import {MatChipsModule} from '@angular/material/chips';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,17 +26,18 @@ import {HttpClientModule} from '@angular/common/http';
     ProjectDetailsComponent,
     ImportProjectComponent
   ],
-  imports: [
-    BrowserModule,
-    CustomMaterialModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FontAwesomeModule,
-    MatPaginatorModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        CustomMaterialModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FontAwesomeModule,
+        MatPaginatorModule,
+        HttpClientModule,
+        MatChipsModule
+    ],
   providers: [UserService],
   bootstrap: [AppComponent]
 })
