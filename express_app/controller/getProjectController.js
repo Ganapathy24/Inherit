@@ -1,28 +1,22 @@
 const getProject = require('../data/getProjects')
 const jsonResponse = require('../JsonResponse')
+const queryBuilder = require('../queryBuilder')
 
 async function getProjectController(req,res) {
-    let query = req.body.query
+    let query = queryBuilder.build(req.body.query)
     let start = req.body.start
     let limit = req.body.limit
     
-    if(query.languages === undefined) {
-        res.send(jsonResponse("UNSUCCESSFUL", "Ill formed query"))
+    let projects = await new getProject().get(query, start, limit)
+
+    if(projects === null) {
+        res.send(jsonResponse("UNSUCCESSFUL","Something went wrong"))
     }
-
+    else if(projects.length == 0) {
+        res.send(jsonResponse("UNSUCCESSFUL","No matching projects found"))
+    }
     else {
-        let projects = await new getProject().get(query, start, limit)
-
-        if(projects === null) {
-            res.send(jsonResponse("UNSUCCESSFUL","Something went wrong"))
-        }
-        else if(projects.length == 0) {
-            res.send(jsonResponse("UNSUCCESSFUL","No matching projects found"))
-        }
-        else {
-            console.log(req.session.user)
-            res.send(jsonResponse("SUCCESSFUL", "Projects matching", projects))
-        }
+        res.send(jsonResponse("SUCCESSFUL", "Projects matching", projects))
     }
 }
 
