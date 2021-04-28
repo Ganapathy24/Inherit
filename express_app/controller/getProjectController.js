@@ -4,6 +4,7 @@ const queryBuilder = require('../queryBuilder')
 
 async function getProjectController(req,res) {
     let query = queryBuilder.build(req.body.query)
+    console.log(query)
     let start = req.body.start
     let limit = req.body.limit
     
