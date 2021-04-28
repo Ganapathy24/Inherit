@@ -53,7 +53,7 @@ export class ImportProjectComponent implements OnInit {
   }
 
   uploadProject(): void {
-    let data: any = {};
+    const data: any = {};
     data['name'] = this.projectname;
     data['description'] = this.description;
     data['languages'] = this.toolsUsed;

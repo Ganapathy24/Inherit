@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {ProjectService} from '../service/project.service';
 
 @Component({
   selector: 'app-project-details',
@@ -25,8 +27,21 @@ export class ProjectDetailsComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   teamname = 'Geeked Out!';
   teammemberId = 'e7it085';
+  projectId: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient,
+              private projectServive: ProjectService) {
+    this.projectId = this.route.snapshot.paramMap.get('projectId');
+    this.projectServive.getProject(this.projectId).subscribe((data) => {
+
+      const x = data['data'];
+      const project = x[0];
+      this.projectname = project['name'];
+      this.description = project['description'];
+      this.teammemberId = project['teammember'];
+      this.teamname = project['teamname'];
+      this.toolsUsed = project['languages'];
+    });
   }
 
   ngOnInit(): void {

@@ -36,6 +36,9 @@ export class LoginComponent implements OnInit {
   departmentControl: any;
 
   yearControl: any;
+  dept: string;
+  year: string;
+  academicyear: string;
 
 
   ngOnInit() {
@@ -130,6 +133,10 @@ export class LoginComponent implements OnInit {
 
   regsiter(): void{
     alert('Registered Successfully');
+    this.userService.register(this.username, this.studentid, this.ghusername, this.mobileno, this.dept
+      , this.academicyear).subscribe((data) => {
+      console.log(data);
+    });
     this.signin();
   }
 }

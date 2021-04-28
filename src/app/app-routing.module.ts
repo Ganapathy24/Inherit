@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'user', component : UserComponent},
   { path: 'login', component : LoginComponent},
   { path: '', component: LoginComponent},
-  {path: 'project-details', component: ProjectDetailsComponent},
+  {path: 'project-details/:projectId', component: ProjectDetailsComponent},
   {path: 'import-project', component: ImportProjectComponent}
 ];
 

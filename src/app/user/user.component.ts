@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ProjectDetails} from '../Entity/ProjectDetails';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from '../service/user.service';
@@ -16,7 +16,7 @@ import {CookieService} from 'ngx-cookie-service';
 export class UserComponent implements OnInit {
 
   noOfItems: number;
-  languagesUsed: string;
+  languagesUsed: any;
   pageSize: number;
   itemsPerPage: number;
   names: string[];
@@ -28,47 +28,35 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     let pd: ProjectDetails;
-    this.projectService.getProjects().subscribe((abc) => {
+    this.projectService.getProjects(this.languagesUsed).subscribe((abc) => {
       let data = JSON.parse(JSON.stringify(abc));
       const dataArray = data['data'];
       for (const dat in dataArray) {
         const a = dataArray[dat];
-        pd = new ProjectDetails(a['_id'], a['name'], 'William Shakespeare\'s name is synonymous with many of the famous' +
-          ' lines he wrote in his plays and prose....', a['languages'], 'Dummy');
+        pd = new ProjectDetails(a['_id'], a['name'], a['description'], a['languages'], 'Dummy');
         this.itemList.push(pd);
       }
     });
-    // pd = new ProjectDetails('Project1', '....', ['Python', 'java'], 'Dummy');
-    // this.itemList.push(pd);
-    // pd = new ProjectDetails('Project2', '....', ['Python', 'java'], 'Dummy');
-    // this.itemList.push(pd);
-    // pd = new ProjectDetails('Project3', '....', ['Python', 'java'], 'Dummy');
-    // this.itemList.push(pd);
-    // pd = new ProjectDetails('Project4', '....', ['Python', 'java'], 'Dummy');
-    // this.itemList.push(pd);
-    // pd = new ProjectDetails('Project5', '....', ['Python', 'java'], 'Dummy');
-    // this.itemList.push(pd);
-    // pd = new ProjectDetails('Project6', '....', ['Python', 'java'], 'Dummy');
-    // this.itemList.push(pd);
-    // pd = new ProjectDetails('Project6', '....', ['Python', 'java'], 'Dummy');
-    // this.itemList.push(pd);
-    // pd = new ProjectDetails('Project6', '....', ['Python', 'java'], 'Dummy');
-    // this.itemList.push(pd);
-    // pd = new ProjectDetails('Project6', '....', ['Python', 'java'], 'Dummy');
-    // this.itemList.push(pd);
+
     this.noOfItems = 4;
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(ProjectDialogComponent);
+  openDialog(projectId: string): void {
+    const dialogconfig = new MatDialogConfig();
+    dialogconfig.disableClose = true;
+    dialogconfig.autoFocus = true;
+    let data = {};
+    data['project'] = projectId;
+    dialogconfig.data = data;
+    const dialogRef = this.dialog.open(ProjectDialogComponent, dialogconfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      result ? this.redirect() : null;
+      result ? this.redirect(projectId) : null;
     });
   }
 
-  redirect(): void {
-    this.router.navigate(['project-details']);
+  redirect(projectId: string): void {
+    this.router.navigate(['project-details', projectId]);
   }
 
   uploadProject(): void {
@@ -87,8 +75,17 @@ export class UserComponent implements OnInit {
 })
 
 export class ProjectDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<any>) {
+  description: string;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data, private projectService: ProjectService) {
+    this.projectService.getProject(data['project']).subscribe((data) => {
+      console.log(data);
+      const x = data['data'];
+      const project = x[0];
+      this.description = project['description'];
+      console.log(this.description);
+    });
+
   }
 
   onNoClick(): void {
