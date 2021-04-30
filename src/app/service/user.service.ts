@@ -23,7 +23,7 @@ export class UserService {
 
 
   register(username: string, studentid: string, ghusername: number, mobileno: number, departmentControl: any, yearControl: any) {
-    let data = {};
+    let data:any = {};
     data['name'] = username;
     data['studentID'] = studentid;
     data['ghusername'] = ghusername;

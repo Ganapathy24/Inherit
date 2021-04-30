@@ -45,7 +45,7 @@ export class UserComponent implements OnInit {
     const dialogconfig = new MatDialogConfig();
     dialogconfig.disableClose = true;
     dialogconfig.autoFocus = true;
-    let data = {};
+    let data: any = {};
     data['project'] = projectId;
     dialogconfig.data = data;
     const dialogRef = this.dialog.open(ProjectDialogComponent, dialogconfig);
@@ -77,8 +77,8 @@ export class UserComponent implements OnInit {
 export class ProjectDialogComponent {
   description: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data, private projectService: ProjectService) {
-    this.projectService.getProject(data['project']).subscribe((data) => {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private projectService: ProjectService) {
+    this.projectService.getProject(data['project']).subscribe((data: any) => {
       console.log(data);
       const x = data['data'];
       const project = x[0];

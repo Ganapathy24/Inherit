@@ -13,6 +13,7 @@ import {MatSelectChange, MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatProgressSpinnerModule,
     MatTooltipModule,
     MatSelectModule,
+    MatGridListModule
   ],
   exports: [
     CommonModule,
@@ -48,6 +50,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSelectModule,
     MatSidenavModule,
     MatTooltipModule,
+    MatGridListModule
   ],
 })
 export class CustomMaterialModule {

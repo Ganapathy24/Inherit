@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" style="width: 100%">
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)=drawer.toggle()>
     <mat-icon>menu</mat-icon>
   </button>
@@ -27,8 +27,8 @@
     </mat-drawer>
   </mat-drawer-container>
 
-  <div class="card-group">
-    <mat-card *ngFor="let product of itemList" class="example-card">
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr);">
+    <!-- <mat-card *ngFor="let product of itemList" class="example-card hover:bg-red-700">
       <mat-toolbar class="flex-wrap shadow " color="primary" style="height: min-content;">
         <mat-card-title style="font-size: medium; width: 100%;">{{product.title}}</mat-card-title>
       </mat-toolbar>
@@ -42,9 +42,49 @@
         <span>&nbsp; &nbsp; &nbsp;</span>
           <button mat-button color="primary" class="button-class " (click)="redirect(product.projectId)"> Select </button>
       </mat-card-footer>
-    </mat-card>
+    </mat-card> -->
+      <mat-card *ngFor="let product of itemList" style="box-sizing: border-box; margin: 10px; padding: 30px">
+        <mat-card-title>{{product.title}}</mat-card-title>
+        <mat-card-content>{{product.description.slice(0,100) + ".."}}</mat-card-content>
+        <mat-card-actions align="center">
+          <button mat-button class="button-class s-button" (click)="openDialog(product.projectId)"> View </button>
+          <button mat-button color="primary" class="button-class " (click)="redirect(product.projectId)"> Select </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card *ngFor="let product of itemList" style="box-sizing: border-box; margin: 10px; padding: 30px">
+        <mat-card-title>{{product.title}}</mat-card-title>
+        <mat-card-content>{{product.description.slice(0,100) + ".."}}</mat-card-content>
+        <mat-card-actions align="center">
+          <button mat-button class="button-class s-button" (click)="openDialog(product.projectId)"> View </button>
+          <button mat-button color="primary" class="button-class " (click)="redirect(product.projectId)"> Select </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card *ngFor="let product of itemList" style="box-sizing: border-box; margin: 10px; padding: 30px">
+        <mat-card-title>{{product.title}}</mat-card-title>
+        <mat-card-content>{{product.description.slice(0,100) + ".."}}</mat-card-content>
+        <mat-card-actions align="center">
+          <button mat-button class="button-class s-button" (click)="openDialog(product.projectId)"> View </button>
+          <button mat-button color="primary" class="button-class " (click)="redirect(product.projectId)"> Select </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card *ngFor="let product of itemList" style="box-sizing: border-box; margin: 10px; padding: 30px">
+        <mat-card-title>{{product.title}}</mat-card-title>
+        <mat-card-content>{{product.description.slice(0,100) + ".."}}</mat-card-content>
+        <mat-card-actions align="center">
+          <button mat-button class="button-class s-button" (click)="openDialog(product.projectId)"> View </button>
+          <button mat-button color="primary" class="button-class " (click)="redirect(product.projectId)"> Select </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card *ngFor="let product of itemList" style="box-sizing: border-box; margin: 10px; padding: 30px">
+        <mat-card-title>{{product.title}}</mat-card-title>
+        <mat-card-content>{{product.description.slice(0,100) + ".."}}</mat-card-content>
+        <mat-card-actions align="center">
+          <button mat-button class="button-class s-button" (click)="openDialog(product.projectId)"> View </button>
+          <button mat-button color="primary" class="button-class " (click)="redirect(product.projectId)"> Select </button>
+        </mat-card-actions>
+      </mat-card>
   </div>
-</div>
+</div>  
 
 
 
