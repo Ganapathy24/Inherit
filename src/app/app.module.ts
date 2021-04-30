@@ -18,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatChipsModule} from '@angular/material/chips';
 import {ProjectService} from './service/project.service';
 import {CookieService} from 'ngx-cookie-service';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {CookieService} from 'ngx-cookie-service';
     FontAwesomeModule,
     MatPaginatorModule,
     HttpClientModule,
-    MatChipsModule
+    MatChipsModule,
+    MatGridListModule
   ],
   providers: [UserService, ProjectService, CookieService],
   bootstrap: [AppComponent]

@@ -32,7 +32,7 @@ export class ProjectDetailsComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient,
               private projectServive: ProjectService) {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
-    this.projectServive.getProject(this.projectId).subscribe((data) => {
+    this.projectServive.getProject(this.projectId).subscribe((data: any) => {
 
       const x = data['data'];
       const project = x[0];
