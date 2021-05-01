@@ -26,7 +26,6 @@ class loginUser {
                     projection:{
                         name:1,
                         password:1,
-                        _id:0
                     }
                 });
 
