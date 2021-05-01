@@ -2,7 +2,7 @@ const { MongoClient } = require("mongodb");
 
 // Replace the uri string with your MongoDB deployment's connection string.
 
-class loginUser {
+class getUser {
 
     constructor() {
         this.database = process.env.DATABASE
@@ -10,7 +10,7 @@ class loginUser {
         this.client = new MongoClient(this.uri, { useUnifiedTopology: true });
     }
 
-    async getUser(user) {
+    async get(studentID) {
         try {
 
             await this.client.connect();
@@ -20,7 +20,7 @@ class loginUser {
 
             const result = await collection.findOne(
                 {
-                    name: user
+                    studentID: studentID
                 }
             );
 
@@ -37,4 +37,4 @@ class loginUser {
 }
 
 
-module.exports = loginUser;
+module.exports = getUser;
