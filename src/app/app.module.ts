@@ -19,6 +19,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {ProjectService} from './service/project.service';
 import {CookieService} from 'ngx-cookie-service';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { SelectProjectComponent } from './select-project/select-project.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     ToolbarComponent,
     ProjectDialogComponent,
     ProjectDetailsComponent,
-    ImportProjectComponent
+    ImportProjectComponent,
+    SelectProjectComponent
   ],
   imports: [
     BrowserModule,

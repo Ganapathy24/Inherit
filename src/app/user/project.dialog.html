@@ -4,5 +4,5 @@
 </div>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Select</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" *ngIf="flag" cdkFocusInitial>Select</button>
 </mat-dialog-actions>

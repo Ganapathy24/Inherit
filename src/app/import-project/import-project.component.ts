@@ -3,6 +3,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {ProjectService} from '../service/project.service';
 import {Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-import-project',
@@ -21,9 +22,11 @@ export class ImportProjectComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   teamname: string;
   teammemberId: string;
+  username: string;
 
 
-  constructor(private projectService: ProjectService, private router: Router) {
+  constructor(private projectService: ProjectService, private router: Router, private cookieService: CookieService) {
+    this.username = this.cookieService.get('user');
   }
 
   ngOnInit(): void {
@@ -58,7 +61,7 @@ export class ImportProjectComponent implements OnInit {
     data['description'] = this.description;
     data['languages'] = this.toolsUsed;
     data['teamname'] = this.teamname;
-    data['teammember'] = this.teammemberId;
+    data['teammemberId'] = this.teammemberId;
     this.projectService.uploadData(data).subscribe((data) => {
       const x = JSON.parse(JSON.stringify(data));
       if (x['status'] === 'SUCCESSFUL') {
@@ -68,5 +71,9 @@ export class ImportProjectComponent implements OnInit {
         alert('Something went wrong !!');
       }
     });
+  }
+
+  redirectHome() {
+    this.router.navigate(['user']);
   }
 }

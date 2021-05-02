@@ -16,7 +16,6 @@
 </mat-toolbar>
 <mat-drawer-container class="example-container" [hasBackdrop]="true">
   <mat-drawer #drawer matDrawerMode="over" position="start" mode="side">
-    <h2 style="margin: 10px">Profile</h2>
     <mat-label class = "mat-label-class">Name : {{username}}</mat-label>
 
     <mat-label  class = "mat-label-class">Student ID - {{studentId}}</mat-label>
@@ -27,8 +26,6 @@
 
     <mat-label  class = "mat-label-class">Mobile number - {{mobileno}}</mat-label>
 
-
-    <button mat-raised-button color="primary" style = "margin-left: 25px" (click)="selectProjects()">Selected Projects</button>
   </mat-drawer>
 
 
@@ -52,19 +49,15 @@
       <mat-card *ngFor="let product of itemList" style="box-sizing: border-box; margin: 10px; padding: 30px">
         <mat-card-title>{{product.title}}</mat-card-title>
         <mat-card-content>{{product.description.slice(0, 100) + ".."}}</mat-card-content>
-        <mat-chip-list #chipList aria-label="Fruit selection">
+        <mat-chip-list #chipList aria-label="Fruit selection" >
           <mat-chip *ngFor="let tool of product.languagesUsed" [selectable]="selectable">
             {{tool}}
           </mat-chip>
         </mat-chip-list>
         <mat-card-actions style="margin: 4px; margin-top: 7px">
-
           <button mat-button class="button-class s-button" (click)="openDialog(product.projectId)"> View</button>
-          <button mat-button color="primary" class="button-class " (click)="redirect(product.projectId)"> Select
-          </button>
         </mat-card-actions>
       </mat-card>
-
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

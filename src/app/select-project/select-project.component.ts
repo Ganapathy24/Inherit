@@ -1,19 +1,18 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ProjectDetails} from '../Entity/ProjectDetails';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {UserService} from '../service/user.service';
 import {ProjectService} from '../service/project.service';
 import {CookieService} from 'ngx-cookie-service';
-
+import {ProjectDialogComponent} from '../user/user.component';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  selector: 'app-select-project',
+  templateUrl: './select-project.component.html',
+  styleUrls: ['./select-project.component.scss']
 })
-export class UserComponent implements OnInit {
+export class SelectProjectComponent implements OnInit {
 
   noOfItems: number;
   languagesUsed: any;
@@ -21,7 +20,6 @@ export class UserComponent implements OnInit {
   itemsPerPage: number;
   names: string[];
   itemList: ProjectDetails[] = new Array();
-  selectable = true;
   username: string;
   studentId: string;
   ghusername: string;
@@ -29,6 +27,7 @@ export class UserComponent implements OnInit {
   department: string;
   year: any;
   projects: string[];
+  selectable: true;
 
 
   constructor(public dialog: MatDialog, private router: Router, private http: HttpClient,
@@ -48,29 +47,38 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     let pd: ProjectDetails;
-    this.projectService.getProjects(this.languagesUsed).subscribe((abc) => {
-      const data = JSON.parse(JSON.stringify(abc));
-      const dataArray = data['data'];
+    const x = JSON.parse(this.cookieService.get('userdata'));
+    console.log(x);
+    const projects = x['projects'];
+    console.log(projects);
+    for (const index in projects){
+      const a = projects[index];
+      console.log(a['_projectId'] + 'selected project id');
+      pd = new ProjectDetails(a['_projectId'], a['_title'], a['_description'], a['_languagesUsed'], a['_teamname'], a['_teammemberId']);
+      this.itemList.push(pd);
+    }
 
-      for (const dat in dataArray) {
-        const a = dataArray[dat];
-        console.log(a['_id'] + ' listing all projects');
-        pd = new ProjectDetails(a['_id'], a['name'], a['description'], a['languages'], a['teamname'], a['teammemberId']);
-        this.itemList.push(pd);
-      }
-    });
+    // this.projectService.getProjects(this.languagesUsed).subscribe((abc) => {
+    //   const data = JSON.parse(JSON.stringify(abc));
+    //   const dataArray = data['data'];
+    //   for (const dat in dataArray) {
+    //     const a = dataArray[dat];
+    //     pd = new ProjectDetails(a['_id'], a['name'], a['description'], a['languages'], a['teamname'], a['teammemberId']);
+    //     this.itemList.push(pd);
+    //   }
+    // });
 
     this.noOfItems = 4;
   }
 
   openDialog(projectId: string): void {
-    console.log(projectId + 'id');
+    console.log('selected project id - ' + projectId);
     const dialogconfig = new MatDialogConfig();
     dialogconfig.disableClose = true;
     dialogconfig.autoFocus = true;
     let data: any = {};
     data['project'] = projectId;
-    data['flag'] = true;
+    data['flag'] = false;
     dialogconfig.data = data;
     const dialogRef = this.dialog.open(ProjectDialogComponent, dialogconfig);
 
@@ -80,7 +88,6 @@ export class UserComponent implements OnInit {
   }
 
   redirect(projectId: string): void {
-    console.log('selected projects -' + projectId);
     this.router.navigate(['project-details', projectId]);
   }
 
@@ -100,33 +107,5 @@ export class UserComponent implements OnInit {
   selectProjects(): void {
     this.router.navigate(['selected-projects']);
   }
-}
-
-@Component({
-  selector: 'app-project-dialog',
-  templateUrl: './project.dialog.html'
-})
-
-export class ProjectDialogComponent {
-  description: string;
-  flag: boolean;
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private projectService: ProjectService) {
-    this.flag = data['flag'];
-    console.log(this.flag + ' for dialog box');
-    this.projectService.getProject(data['project']).subscribe((d: any) => {
-      console.log(d['data'] + 'retrived project');
-      const x = d['data'];
-
-      const project = x[0];
-      this.description = project['description'];
-      console.log(this.description);
-    });
-
-  }
-
-  // onNoClick(): void {
-  //   this.dialogRef.close();
-  // }
 
 }

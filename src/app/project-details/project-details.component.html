@@ -2,8 +2,11 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>InherIT</span>
+  <span>InherIT - {{username}}</span>
   <span class="example-spacer"></span>
+  <button mat-icon-button matTooltip="Home" (click)="redirectHome()">
+    <mat-icon>home</mat-icon>
+  </button>
   <button mat-icon-button matTooltip="Logout" (click)="logout()">
     <mat-icon>logout</mat-icon>
   </button>
@@ -33,7 +36,7 @@
   <br><br>
   <h3> Description:</h3>
 
-  <mat-label>{{description}}</mat-label>
-
+  <mat-label>{{description}}</mat-label><br><br>
+  <button mat-raised-button color="primary" (click)="takeproject()">Take Project</button>
 </mat-card>
 

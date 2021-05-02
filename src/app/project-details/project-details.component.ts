@@ -4,6 +4,8 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ProjectService} from '../service/project.service';
+import {CookieService} from 'ngx-cookie-service';
+import {ProjectDetails} from '../Entity/ProjectDetails';
 
 @Component({
   selector: 'app-project-details',
@@ -11,26 +13,22 @@ import {ProjectService} from '../service/project.service';
   styleUrls: ['./project-details.component.scss']
 })
 export class ProjectDetailsComponent implements OnInit {
-  projectname: any = 'Inherit';
-  description: any = 'William Shakespeare \'s name is synonymous with many of the famous lines he wrote in his plays and prose. Yet his' +
-    'poems are not nearly as recognizable to many as the characters and famous monologues from his many plays.' +
-    'In Shakespeare\'s era (1564-1616), it was not profitable but very fashionable to write poetry. It also provided' +
-    'credibility to his talent as a writer and helped to enhance his social standing. It seems writing poetry was' +
-    'something he greatly enjoyed and did mainly for himself at times when he was not consumed with writing a play.' +
-    'Because of their more private nature, few poems, particularly long-form poems, have been published.' +
-    'The two longest works that scholars agree were written by Shakespear.';
-  toolsUsed: string[] = ['python', 'Django'];
+  projectname: any = '';
+  description: any = '';
+  toolsUsed: string[] ;
   visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  teamname = 'Geeked Out!';
-  teammemberId = 'e7it085';
+  teamname: any;
+  teammemberId: any;
   projectId: string;
+  username: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient,
-              private projectServive: ProjectService) {
+              private projectServive: ProjectService, private cookieService: CookieService) {
+    this.username = this.cookieService.get('user');
     this.projectId = this.route.snapshot.paramMap.get('projectId');
     this.projectServive.getProject(this.projectId).subscribe((data: any) => {
 
@@ -38,7 +36,7 @@ export class ProjectDetailsComponent implements OnInit {
       const project = x[0];
       this.projectname = project['name'];
       this.description = project['description'];
-      this.teammemberId = project['teammember'];
+      this.teammemberId = project['teammemberId'];
       this.teamname = project['teamname'];
       this.toolsUsed = project['languages'];
     });
@@ -47,7 +45,7 @@ export class ProjectDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  remove(tool: string) {
+  remove(tool: string): void {
     const index = this.toolsUsed.indexOf(tool);
 
     if (index >= 0) {
@@ -55,7 +53,7 @@ export class ProjectDetailsComponent implements OnInit {
     }
   }
 
-  add(event: MatChipInputEvent) {
+  add(event: MatChipInputEvent): void{
     const input = event.input;
     const value = event.value;
 
@@ -72,5 +70,27 @@ export class ProjectDetailsComponent implements OnInit {
 
   logout(): void {
     this.router.navigate(['login']);
+  }
+
+  takeproject(): void {
+    const pd =  new ProjectDetails(this.projectId, this.projectname, this.description, this.toolsUsed,
+      this.teamname, this.teammemberId);
+    this.projectServive.selectProjects(pd).subscribe((data) => {
+      // @ts-ignore
+      const status: any = data['status'];
+      window.alert(status);
+      if(status === 'SUCCESSFUL') {
+        let d = JSON.parse(this.cookieService.get('userdata'));
+        let projects = d['projects'];
+        projects.push(pd);
+        d['projects'] = projects;
+        this.cookieService.set('userdata', JSON.stringify(d));
+      }
+      this.router.navigate(['user']);
+    });
+  }
+
+  redirectHome() {
+    this.router.navigate(['user']);
   }
 }

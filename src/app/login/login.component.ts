@@ -60,8 +60,13 @@ export class LoginComponent implements OnInit {
       console.log(data);
       const x = JSON.parse(JSON.stringify(data));
       const status = x['status'];
+      const y = x['data'];
+      console.log(y['_id']);
+      y['year'] = JSON.stringify(y['year']);
       if (status === 'SUCCESSFUL') {
         this.cookieService.set('user', this.username);
+        this.cookieService.set('id', y['studentID']);
+        this.cookieService.set('userdata', JSON.stringify(y));
         this.router.navigate(['user']);
       } else {
         alert('Invalid Credientials');
@@ -101,7 +106,6 @@ export class LoginComponent implements OnInit {
       .display = 'none';
 
 
-
   }
 
   signin(): void {
@@ -131,7 +135,7 @@ export class LoginComponent implements OnInit {
       .display = 'flex';
   }
 
-  regsiter(): void{
+  regsiter(): void {
     alert('Registered Successfully');
     this.userService.register(this.username, this.studentid, this.ghusername, this.mobileno, this.dept
       , this.academicyear).subscribe((data) => {

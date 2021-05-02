@@ -21,15 +21,18 @@ class loginUser {
             const result = await collection.findOne(
                 {
                     name: user
-                }
+                },
+              {
+                password: 0
+              }
             );
 
             return result;
-        } 
+        }
         catch (err) {
             return err;
         }
-        
+
         finally {
             await this.client.close();
         }

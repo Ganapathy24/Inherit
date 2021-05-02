@@ -25,7 +25,8 @@ body {
 
 
 .example-container {
-  width: min-content;
+  width: 100vw;
+  height : 92vh;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 .example-sidenav-content {
@@ -41,4 +42,9 @@ body {
 
 .dashboard {
   display :flex;
+}
+mat-drawer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

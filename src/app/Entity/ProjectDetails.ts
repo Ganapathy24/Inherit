@@ -3,14 +3,17 @@ export class ProjectDetails {
   private _title: string;
   private _description: string;
   private _languagesUsed: string[];
-  private _button: any;
+  private _teamname: string;
+  private _teammemberId: string;
 
-  constructor(projectId: string, title: string, description: string, languagesUsed: string[], button: any) {
+
+  constructor(projectId: string, title: string, description: string, languagesUsed: string[], teamname: string, teammemberId: string) {
     this._projectId = projectId;
     this._title = title;
     this._description = description;
     this._languagesUsed = languagesUsed;
-    this._button = button;
+    this._teamname = teamname;
+    this._teammemberId = teammemberId;
   }
 
   get projectId(): string {
@@ -45,11 +48,19 @@ export class ProjectDetails {
     this._languagesUsed = value;
   }
 
-  get button(): any {
-    return this._button;
+  get teamname(): string {
+    return this._teamname;
   }
 
-  set button(value: any) {
-    this._button = value;
+  set teamname(value: string) {
+    this._teamname = value;
+  }
+
+  get teammemberId(): string {
+    return this._teammemberId;
+  }
+
+  set teammemberId(value: string) {
+    this._teammemberId = value;
   }
 }
